@@ -1,5 +1,4 @@
-﻿
-using CustomerGreen.Core.Entities;
+﻿using CustomerGreen.Core.Entities;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;

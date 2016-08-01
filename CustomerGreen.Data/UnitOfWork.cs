@@ -19,25 +19,25 @@ namespace CustomerGreen.Data
             _context = context;
         }
 
-        public IRepository<TEntity> Repository<TEntity>() where TEntity : BaseEntity
+        public IRepository<T> Repository<T>() where T : IEntity
         {
             if (_repositories == null)
             {
                 _repositories = new Hashtable();
             }
 
-            var type = typeof(TEntity).Name;
+            var type = typeof(T).Name;
             
             if (_repositories.ContainsKey(type))
             {
-                return (IRepository<TEntity>)_repositories[type];
+                return (IRepository<T>)_repositories[type];
             }
             
             var repositoryType = typeof(BaseRepository<>);
             
-            _repositories.Add(type, Activator.CreateInstance(repositoryType.MakeGenericType(typeof(TEntity)), _context));
+            _repositories.Add(type, Activator.CreateInstance(repositoryType.MakeGenericType(typeof(T)), _context));
             
-            return (IRepository<TEntity>)_repositories[type];
+            return (IRepository<T>)_repositories[type];
         }
 
         public void BeginTransaction()

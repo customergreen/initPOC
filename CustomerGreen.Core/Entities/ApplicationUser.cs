@@ -31,7 +31,20 @@ namespace CustomerGreen.Core.Entities
         public DateTime? LastLoginDate { get; set; }
 
         public bool Activated { get; set; }
-
+        public long OrgId { get; set; }
         public virtual ICollection<Contact> Contacts { get; set; }
+    }
+
+    public class ApplicationRole : IdentityRole
+    {
+        public long OrgId { get; set; }
+        public string DisplayName { get; set; }
+        public ApplicationRole() : base() { }
+        public ApplicationRole(string name, long orgId, string displayName)
+            : base(name)
+        {
+            this.OrgId = orgId;
+            this.DisplayName = displayName;
+        }
     }
 }

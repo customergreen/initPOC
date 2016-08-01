@@ -1,4 +1,6 @@
-﻿using CustomerGreen.Core.Entities;
+﻿using System.Linq;
+using System.Threading;
+using CustomerGreen.Core.Entities;
 using CustomerGreen.Core.Logging;
 using CustomerGreen.Data.Configurations;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -64,7 +66,38 @@ namespace CustomerGreen.Data
         #endregion
 
         #region IDbContext
+        public override int SaveChanges()
+        {
+            var modifiedEntries = ChangeTracker.Entries()
+                .Where(x => x.Entity is IAuditableEntity
+                    && (x.State == EntityState.Added || x.State == EntityState.Modified));
 
+            foreach (var entry in modifiedEntries)
+            {
+                var entity = entry.Entity as IAuditableEntity;
+                if (entity != null)
+                {
+                    string identityName = Thread.CurrentPrincipal.Identity.Name;
+                    DateTime now = DateTime.UtcNow;
+
+                    if (entry.State == System.Data.Entity.EntityState.Added)
+                    {
+                        entity.CreatedBy = identityName;
+                        entity.CreatedDate = now;
+                    }
+                    else
+                    {
+                        base.Entry(entity).Property(x => x.CreatedBy).IsModified = false;
+                        base.Entry(entity).Property(x => x.CreatedDate).IsModified = false;
+                    }
+
+                    entity.UpdatedBy = identityName;
+                    entity.UpdatedDate = now;
+                }
+            }
+
+            return base.SaveChanges();
+        }
         public new IDbSet<TEntity> Set<TEntity>() where TEntity : BaseEntity
         {
             return base.Set<TEntity>();

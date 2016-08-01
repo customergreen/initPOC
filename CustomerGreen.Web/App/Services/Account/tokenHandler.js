@@ -8,8 +8,8 @@
     tokenHandler.inject = ['storageHandler'];
 
     function tokenHandler(storageHandler) {
-        var loginTokenId = 'kiks-app-loginToken-2015';
-        var nameTokenId = 'kiks-app-loginName-2015';
+        var loginTokenId = 'CG-app-loginToken-2015';
+        var nameTokenId = 'CG-app-loginName-2015';
         var redirectUrl = null;
 
         return {

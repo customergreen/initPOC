@@ -31,7 +31,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Dtos\BaseDto.cs" />
+    <Compile Include="Dtos\BusinessSubTypeDto.cs" />
+    <Compile Include="Dtos\BusinessTypeDto.cs" />
     <Compile Include="Dtos\ContactDto.cs" />
+    <Compile Include="Dtos\LisenceTypeDto.cs" />
+    <Compile Include="Dtos\OrganizationDetailsDto.cs" />
+    <Compile Include="Dtos\OrganizationProfileDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

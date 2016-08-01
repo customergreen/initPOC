@@ -17,7 +17,11 @@
             lastName: "",
             email : "",
             userName: "",
-            password: ""
+            password: "",
+            conf_password: "",
+            business_type: "",
+            business_sub_type: "",
+            lisence_type: ""
         };
 
         $scope.signUp = function () {

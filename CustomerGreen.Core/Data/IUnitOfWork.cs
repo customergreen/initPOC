@@ -7,7 +7,7 @@ namespace CustomerGreen.Core.Data
 {
     public interface IUnitOfWork : IDisposable
     {
-        IRepository<TEntity> Repository<TEntity>() where TEntity : BaseEntity;
+        IRepository<T> Repository<T>() where T : IEntity;
         
         void BeginTransaction();
         

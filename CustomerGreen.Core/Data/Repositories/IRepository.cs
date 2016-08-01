@@ -5,16 +5,16 @@ using System.Threading.Tasks;
 
 namespace CustomerGreen.Core.Data.Repositories
 {
-    public interface IRepository<TEntity> : IDisposable where TEntity : BaseEntity
+    public interface IRepository<T> : IDisposable where T : IEntity
     {
-        Task<List<TEntity>> GetAllAsync();
+        Task<List<T>> GetAllAsync();
         
-        Task<TEntity> GetByIdAsync(int id);
+        Task<T> GetByIdAsync(int id);
 
-        void Add(TEntity entity);
+        void Add(T entity);
 
-        void Update(TEntity entity);
+        void Update(T entity);
         
-        void Delete(TEntity entity);
+        void Delete(T entity);
     }
 }
