@@ -9,7 +9,7 @@
 
     function AuthService($q, $window, errorHandler, $http, tokenHandler) {
 
-        var serviceBase = 'http://localhost:8131/';
+        var serviceBase = 'http://localhost:2686/';
         var authServiceFactory = {};
 
         var _saveRegistration = function (registration) {

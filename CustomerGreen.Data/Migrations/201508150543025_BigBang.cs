@@ -1,3 +1,5 @@
+using System.Transactions.Configuration;
+
 namespace CustomerGreen.Data.Migrations
 {
     using System;
@@ -7,6 +9,86 @@ namespace CustomerGreen.Data.Migrations
     {
         public override void Up()
         {
+            CreateTable(
+                "dbo.LisenceTypes",
+                c => new
+                {
+                    Id = c.Long(nullable: false, identity: true),
+                    License = c.String(nullable: false, maxLength: 256),
+                    Cost = c.Double(nullable: false),
+                    StartTime = c.DateTime(nullable: false),
+                    EndTime = c.DateTime(nullable: false),
+                    Active = c.Boolean(nullable: false)
+                })
+                .PrimaryKey(t => t.Id)
+                .Index(t => t.License, unique: true, name: "LisenceTypeIndex");
+
+            CreateTable(
+                "dbo.BusinessType",
+                c => new
+                {
+                    Id = c.Long(nullable: false, identity: true),
+                    Business = c.String(nullable: false, maxLength: 256),
+                })
+                .PrimaryKey(t => t.Id)
+                .Index(t => t.Business, unique: true, name: "BusinessTypeIndex");
+
+            CreateTable(
+                "dbo.BusinessSubType",
+                c => new
+                {
+                    Id = c.Long(nullable: false,identity:true),
+                    BusinessId = c.Long(nullable: false),
+                    BusinessSubType = c.String(nullable: false, maxLength: 256),
+                })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.BusinessType", t => t.BusinessId, cascadeDelete: true);
+
+            CreateTable(
+                "dbo.Organizations",
+                c => new
+                {
+                    Id = c.Long(nullable: false, identity: true),
+                    OrgKey = c.String(nullable:false, maxLength:100),
+                    CompanyName = c.String(nullable:false,maxLength:1000),
+                    Phone = c.String(),
+                    Mobile = c.String(),
+                    BusinessTypeId = c.Long(nullable:true),
+                    BusinessSubTypeId = c.Long(nullable:true),
+                    LisenceTypeId = c.Long(nullable:false),
+                    ContactEmail  = c.String(nullable:false),
+                    StrategicEmail = c.String(nullable:false),
+                    TacticalEmail = c.String(nullable:false),
+                    About = c.String(),
+                    Website = c.String(nullable:false),
+                    Country = c.String(),
+                    Street1 = c.String(),
+                    Street2 = c.String(),
+                    City = c.String(),
+                    State = c.String(),
+                    Zip = c.String(),
+                    IsActive = c.Boolean(defaultValue:true),
+                    Logo = c.Byte()
+                })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.LisenceTypes", t => t.LisenceTypeId)
+                .Index(t => t.OrgKey, unique: true, name: "OrgKeyIndex");
+
+            CreateTable(
+                "dbo.OrganizationDetail",
+                c => new
+                {
+                    Id = c.Long(nullable: false, identity: true),
+                    OrgId = c.Long(nullable:false),
+                    RenewDate = c.DateTime(nullable:true),
+                    DueDate = c.DateTime(nullable:false),
+                    PaymentReceived = c.Boolean(defaultValue:false),
+                    PaymentDue = c.Double(),
+                    LocationCount = c.Int()
+                })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Organizations", t => t.OrgId);
+
             CreateTable(
                 "dbo.Contacts",
                 c => new
@@ -35,6 +117,7 @@ namespace CustomerGreen.Data.Migrations
                         DateCreated = c.DateTime(nullable: false),
                         LastLoginDate = c.DateTime(),
                         Activated = c.Boolean(nullable: false),
+                        OrgId = c.Long(),
                         Email = c.String(maxLength: 256),
                         EmailConfirmed = c.Boolean(nullable: false),
                         PasswordHash = c.String(),
@@ -81,10 +164,11 @@ namespace CustomerGreen.Data.Migrations
                     {
                         UserId = c.String(nullable: false, maxLength: 128),
                         RoleId = c.String(nullable: false, maxLength: 128),
+                        
                     })
                 .PrimaryKey(t => new { t.UserId, t.RoleId })
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
-                .ForeignKey("dbo.AspNetRoles", t => t.RoleId, cascadeDelete: true)
+                .ForeignKey("dbo.AspNetRoles", t => t.RoleId, cascadeDelete: true)                
                 .Index(t => t.UserId)
                 .Index(t => t.RoleId);
             
@@ -94,9 +178,13 @@ namespace CustomerGreen.Data.Migrations
                     {
                         Id = c.String(nullable: false, maxLength: 128),
                         Name = c.String(nullable: false, maxLength: 256),
+                        OrgId = c.Long(nullable: false),
+                        DisplayName = c.String()
                     })
                 .PrimaryKey(t => t.Id)
-                .Index(t => t.Name, unique: true, name: "RoleNameIndex");
+                .ForeignKey("dbo.Organizations", t => t.OrgId, cascadeDelete: true)
+                .Index(t => t.Name, unique: true, name: "RoleNameIndex")
+                .Index(t => t.OrgId);
             
         }
         
@@ -120,6 +208,11 @@ namespace CustomerGreen.Data.Migrations
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.Contacts");
+            DropTable("dbo.OrganizationDetail");
+            DropTable("dbo.Organizations");
+            DropTable("dbo.BusinessSubType");
+            DropTable("dbo.BusinessType");
+            DropTable("dbo.LisenceTypes");
         }
     }
 }

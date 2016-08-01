@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
-using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -19,7 +18,6 @@ namespace CustomerGreen.Core.Entities
         public ApplicationUser()
         {
             DateCreated = DateTime.Now;
-            Contacts = new HashSet<Contact>();
         }
 
         public string FirstName { get; set; }
@@ -32,7 +30,6 @@ namespace CustomerGreen.Core.Entities
 
         public bool Activated { get; set; }
         public long OrgId { get; set; }
-        public virtual ICollection<Contact> Contacts { get; set; }
     }
 
     public class ApplicationRole : IdentityRole
