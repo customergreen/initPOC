@@ -25,7 +25,7 @@ namespace CustomerGreen.Data.Migrations
         {
             //if (!_pendingMigrations) return;
 
-            //InitializeLisenceTypes(context);
+            //InitializeLicenseTypes(context);
             //InitializeBusinessTypes(context);
             //InitializeBusinessSubTypes(context);
             //InitializeOrgnUser(context);
@@ -47,7 +47,7 @@ namespace CustomerGreen.Data.Migrations
         //            ContactEmail = "manasi.arora@gmail.com",
         //            Country = "India",
         //            IsActive = true,
-        //            LicenseType = context.LisenceTypes.FirstOrDefault(b => b.Id == 1),
+        //            LicenseType = context.LicenseTypes.FirstOrDefault(b => b.Id == 1),
         //            Mobile = "8308333954",
         //            OrgKey = "ITOI_ORG",
         //            Phone = "03732863755",
@@ -110,9 +110,9 @@ namespace CustomerGreen.Data.Migrations
         //    }
         //}
 
-        //public void InitializeLisenceTypes(CustomerGreenDbContext context)
+        //public void InitializeLicenseTypes(CustomerGreenDbContext context)
         //{
-        //    var lisenceType1 = new LisenceType
+        //    var LicenseType1 = new LicenseType
         //    {
         //        Active = true,
         //        Cost = 100,
@@ -121,7 +121,7 @@ namespace CustomerGreen.Data.Migrations
         //        License = "One - One"
         //    };
 
-        //    var lisenceType2 = new LisenceType
+        //    var LicenseType2 = new LicenseType
         //    {
         //        Active = true,
         //        Cost = 100,
@@ -130,7 +130,7 @@ namespace CustomerGreen.Data.Migrations
         //        License = "One - Many"
         //    };
 
-        //    var lisenceType3 = new LisenceType
+        //    var LicenseType3 = new LicenseType
         //    {
         //        Active = true,
         //        Cost = 100,
@@ -139,9 +139,9 @@ namespace CustomerGreen.Data.Migrations
         //        License = "Many - Many"
         //    };
 
-        //    context.LisenceTypes.Add(lisenceType1);
-        //    context.LisenceTypes.Add(lisenceType2);
-        //    context.LisenceTypes.Add(lisenceType3);
+        //    context.LicenseTypes.Add(LicenseType1);
+        //    context.LicenseTypes.Add(LicenseType2);
+        //    context.LicenseTypes.Add(LicenseType3);
 
         //    context.Commit();
         //}

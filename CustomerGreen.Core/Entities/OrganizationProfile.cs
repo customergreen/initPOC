@@ -4,9 +4,7 @@ using System.ComponentModel.DataAnnotations;
 namespace CustomerGreen.Core.Entities
 {
     public class OrganizationProfile : AuditableEntity
-    {       
-        [Required(ErrorMessage = "Organization Key Id is required")]
-        [Display(Name = "Organization Key")]
+    {        
         public string OrgKey { get; set; }
 
         [Required(ErrorMessage = "Company Name is required")]
@@ -24,7 +22,7 @@ namespace CustomerGreen.Core.Entities
 
         public virtual BusinessSubType BusinessSubType { get; set; }
 
-        public virtual LisenceType LicenseType { get; set; }
+        public virtual LicenseType LicenseType { get; set; }
 
         [Display(Name = "Contact Email")]
         [EmailAddress]

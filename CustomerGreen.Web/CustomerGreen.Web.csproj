@@ -217,6 +217,9 @@
     <Compile Include="Capsule\Modules\ServiceCapsuleModule.cs" />
     <Compile Include="Capsule\WebCapsule.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BusinessSubTypesController.cs" />
+    <Compile Include="Controllers\LicenseTypesController.cs" />
+    <Compile Include="Controllers\BusinessTypesController.cs" />
     <Compile Include="Controllers\ContactsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">

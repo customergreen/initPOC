@@ -69,6 +69,10 @@
     <Compile Include="Entities\OrganizationProfile.cs" />
     <Compile Include="Logging\ILogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ILicenseTypeService.cs" />
+    <Compile Include="Services\IBusinessSubTypeService.cs" />
+    <Compile Include="Services\IBusinessTypeService.cs" />
+    <Compile Include="Services\IOrganizationService.cs" />
     <Compile Include="Services\IContactService.cs" />
     <Compile Include="Services\IService.cs" />
   </ItemGroup>

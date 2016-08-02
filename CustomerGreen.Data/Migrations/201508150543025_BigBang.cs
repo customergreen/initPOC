@@ -10,7 +10,7 @@ namespace CustomerGreen.Data.Migrations
         public override void Up()
         {
             CreateTable(
-                "dbo.LisenceTypes",
+                "dbo.LicenseTypes",
                 c => new
                 {
                     Id = c.Long(nullable: false, identity: true),
@@ -21,7 +21,7 @@ namespace CustomerGreen.Data.Migrations
                     Active = c.Boolean(nullable: false)
                 })
                 .PrimaryKey(t => t.Id)
-                .Index(t => t.License, unique: true, name: "LisenceTypeIndex");
+                .Index(t => t.License, unique: true, name: "LicenseTypeIndex");
 
             CreateTable(
                 "dbo.BusinessType",
@@ -55,7 +55,7 @@ namespace CustomerGreen.Data.Migrations
                     Mobile = c.String(),
                     BusinessTypeId = c.Long(nullable:true),
                     BusinessSubTypeId = c.Long(nullable:true),
-                    LisenceTypeId = c.Long(nullable:false),
+                    LicenseTypeId = c.Long(nullable:false),
                     ContactEmail  = c.String(nullable:false),
                     StrategicEmail = c.String(nullable:false),
                     TacticalEmail = c.String(nullable:false),
@@ -71,7 +71,7 @@ namespace CustomerGreen.Data.Migrations
                     Logo = c.Byte()
                 })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.LisenceTypes", t => t.LisenceTypeId)
+                .ForeignKey("dbo.LicenseTypes", t => t.LicenseTypeId)
                 .Index(t => t.OrgKey, unique: true, name: "OrgKeyIndex");
 
             CreateTable(
@@ -212,7 +212,7 @@ namespace CustomerGreen.Data.Migrations
             DropTable("dbo.Organizations");
             DropTable("dbo.BusinessSubType");
             DropTable("dbo.BusinessType");
-            DropTable("dbo.LisenceTypes");
+            DropTable("dbo.LicenseTypes");
         }
     }
 }

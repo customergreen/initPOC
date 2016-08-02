@@ -34,28 +34,31 @@
                             <p ng-show="registrationForm.email.$invalid && !registrationForm.email.$pristine" class="help-block"> Email is required. (format, e.g. email@email.com)</p>
                         </div>
                     </div>
-                    
+                    <div class="form-group">
+                        <label for="inputCompany" class="col-lg-2 control-label">Company</label>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="inputCompany" name="company" placeholder="Organization Name" ng-model="registration.companyName" required>
+                            <p ng-show="registrationForm.company.$invalid && !registrationForm.company.$pristine" class="help-block"> Company Name is required.</p>
+                        </div>
+                    </div>                    
                     <div class="form-group">
                         <label for="inputBusinesstype" class="col-lg-2 control-label">Business Type</label>
                         <div class="col-lg-10">
-                            <input type="text" class="form-control" id="inputBusinesstype" name="businesstype" placeholder="Business Type" ng-model="registration.business_type" required>
-                            <p ng-show="registrationForm.businesstype.$invalid && !registrationForm.businesstype.$pristine" class="help-block">Business Type is required.</p>
+                            <input type="text" class="form-control" id="inputBusinesstype" name="businesstype" placeholder="Business Type" ng-model="registration.business_type">                            
                         </div>
-                    </div>
-                    
+                    </div>                    
                     <div class="form-group">
                         <label for="inputBusinessSubtype" class="col-lg-2 control-label">Business Sub Type</label>
                         <div class="col-lg-10">
-                            <input type="text" class="form-control" id="inputBusinessSubtype" name="businesssubtype" placeholder="Business Sub Type" ng-model="registration.business_sub_type">
-                            <!--<p ng-show="registrationForm.lasname.$invalid && !registrationForm.lastname.$pristine" class="help-block">Last name is required.</p>-->
+                            <input type="text" class="form-control" id="inputBusinessSubtype" name="businesssubtype" placeholder="Business Sub Type" ng-model="registration.business_sub_type">                            
                         </div>
                     </div>
                     
                     <div class="form-group">
-                        <label for="inputLisenceType" class="col-lg-2 control-label">Lisence Type</label>
+                        <label for="inputLicenseType" class="col-lg-2 control-label">License Type</label>
                         <div class="col-lg-10">
-                            <input type="text" class="form-control" id="inputLisenceType" name="lisencetype" placeholder="Lisence Type" ng-model="registration.lisence_type" required>
-                            <p ng-show="registrationForm.lasname.$invalid && !registrationForm.lastname.$pristine" class="help-block">Last name is required.</p>
+                            <input type="text" class="form-control" id="inputLicenseType" name="Licensetype" placeholder="License Type" ng-model="registration.License_type" required>
+                            <p ng-show="registrationForm.License.$invalid && !registrationForm.License.$pristine" class="help-block">Select a License</p>
                         </div>
                     </div>
 

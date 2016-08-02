@@ -44,6 +44,11 @@ namespace CustomerGreen.Web.Models
         public string Email { get; set; }
 
         [Required]
+        [Display(Name = "Company")]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {3} characters long.", MinimumLength = 3)]
+        public string CompanyName { get; set; }
+
+        [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {6} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
@@ -54,11 +59,13 @@ namespace CustomerGreen.Web.Models
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
-        public string BusinessType { get; set; }
+        public long BusinessType { get; set; }
 
-        public string BusinessSubType { get; set; }
+        public long BusinessSubType { get; set; }
 
-        public string LisenceType { get; set; }
+        [Required]
+        [Display(Name = "License")]        
+        public long LicenseType { get; set; }
     }
 
     public class RegisterExternalBindingModel

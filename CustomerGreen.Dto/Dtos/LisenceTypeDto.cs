@@ -2,7 +2,7 @@
 namespace CustomerGreen.Dto.Dtos
 
 {
-    public class LisenceTypeDto : BaseDto
+    public class LicenseTypeDto : BaseDto
     {
         public string License { get; set; }
         public double Cost { get; set; }

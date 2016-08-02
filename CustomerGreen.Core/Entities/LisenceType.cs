@@ -2,7 +2,7 @@
 
 namespace CustomerGreen.Core.Entities
 {
-    public class LisenceType: BaseEntity
+    public class LicenseType: BaseEntity
     {
         public string License { get; set; }
         public double Cost { get; set; }

@@ -15,13 +15,14 @@
         $scope.registration = {
             firstName: "",
             lastName: "",
-            email : "",
+            email: "",
+            companyName: "",
             userName: "",
             password: "",
             conf_password: "",
             business_type: "",
             business_sub_type: "",
-            lisence_type: ""
+            License_type: ""
         };
 
         $scope.signUp = function () {
