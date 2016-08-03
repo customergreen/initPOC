@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Net;
 using CustomerGreen.Core.Entities;
 using CustomerGreen.Data;
 using CustomerGreen.Web.Models;
@@ -331,6 +332,11 @@ namespace CustomerGreen.Web.Controllers
                 return BadRequest(ModelState);
             }
 
+            //Check if user already exists
+            var checkUser = UserManager.FindByName(model.Email);
+            if (checkUser != null)            
+                return BadRequest("Email already registered! Please enter a new one");            
+
             using (var dbContext = new CustomerGreenDbContext())
             {
                 //use dbContext
@@ -389,10 +395,7 @@ namespace CustomerGreen.Web.Controllers
 
                     return Ok();
                 }
-                else
-                {
-                    return BadRequest("Unable to Register, Please Try again!!");
-                }
+                return BadRequest("Unable to Register, Please Try again!!");
             }
         }
 
