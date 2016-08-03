@@ -68,7 +68,11 @@ namespace CustomerGreen.Data.Migrations
                     State = c.String(),
                     Zip = c.String(),
                     IsActive = c.Boolean(defaultValue:true),
-                    Logo = c.Byte()
+                    Logo = c.Byte(),
+                    CreatedDate = c.DateTime(nullable: false),
+                    CreatedBy = c.String(maxLength: 256),
+                    UpdatedDate = c.DateTime(nullable: false),
+                    UpdatedBy = c.String(maxLength: 256),
                 })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.LicenseTypes", t => t.LicenseTypeId)
@@ -84,7 +88,11 @@ namespace CustomerGreen.Data.Migrations
                     DueDate = c.DateTime(nullable:false),
                     PaymentReceived = c.Boolean(defaultValue:false),
                     PaymentDue = c.Double(),
-                    LocationCount = c.Int()
+                    LocationCount = c.Int(),
+                    CreatedDate = c.DateTime(nullable: false),
+                    CreatedBy = c.String(maxLength: 256),
+                    UpdatedDate = c.DateTime(nullable: false),
+                    UpdatedBy = c.String(maxLength: 256),
                 })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Organizations", t => t.OrgId);
@@ -185,7 +193,11 @@ namespace CustomerGreen.Data.Migrations
                 .ForeignKey("dbo.Organizations", t => t.OrgId, cascadeDelete: true)
                 .Index(t => t.Name, unique: true, name: "RoleNameIndex")
                 .Index(t => t.OrgId);
-            
+
+            AddColumn("dbo.AspNetUsers", "OrgId", c => c.Long(nullable: false));
+            AddColumn("dbo.AspNetRoles", "OrgId", c => c.Long());
+            AddColumn("dbo.AspNetRoles", "DisplayName", c => c.String());
+            AddColumn("dbo.AspNetRoles", "Discriminator", c => c.String(nullable: false, maxLength: 128));
         }
         
         public override void Down()

@@ -65,6 +65,12 @@
     <Compile Include="Entities\Foundation\IAuditableEntity.cs" />
     <Compile Include="Entities\Foundation\IEntity.cs" />
     <Compile Include="Entities\LisenceType.cs" />
+    <Compile Include="Entities\Menu.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\MenuAccess.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Entities\OrganizationDetails.cs" />
     <Compile Include="Entities\OrganizationProfile.cs" />
     <Compile Include="Logging\ILogger.cs" />
