@@ -22,6 +22,7 @@
     <IISExpressUseClassicPipelineMode />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">D:\Manasi\ITOI\LastMile\CustomerGreen</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -262,6 +263,7 @@
     <Content Include="Assets\Styles\ripples.css" />
     <Content Include="Assets\Styles\roboto.css" />
     <Content Include="Assets\Styles\styles.css" />
+    <Content Include="Assets\Styles\ui-bootstrap-csp.css" />
     <Content Include="favicon.ico" />
     <Content Include="Assets\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Assets\fonts\glyphicons-halflings-regular.woff2" />
@@ -1065,7 +1067,6 @@
     <Content Include="Assets\Scripts\angular\version.json" />
     <Content Include="Assets\Scripts\angular\errors.json" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
