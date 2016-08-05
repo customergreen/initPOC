@@ -12,7 +12,7 @@ namespace CustomerGreen.Data.Migrations
                 "dbo.DefaultCheckoutPoints",
                 c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
+                        Id = c.Long(nullable: false, identity: true),
                         CheckoutPoint = c.String(),                        
                     })
                 .PrimaryKey(t => t.Id);
@@ -26,7 +26,7 @@ namespace CustomerGreen.Data.Migrations
                 "dbo.DefaultFeedbackCategories",
                 c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
+                        Id = c.Long(nullable: false, identity: true),
                         CategoryKey= c.String(nullable:false),
                         Category = c.String(nullable:false),
                     })
@@ -42,7 +42,7 @@ namespace CustomerGreen.Data.Migrations
                 "dbo.DefaultTitles",
                 c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
+                        Id = c.Long(nullable: false, identity: true),
                         Title = c.String(nullable:false)                        
                     })
                 .PrimaryKey(t => t.Id);
@@ -56,7 +56,7 @@ namespace CustomerGreen.Data.Migrations
                 "dbo.DefaultQuestions",
                 c => new
                 {
-                    Id = c.Int(nullable: false, identity: true),
+                    Id = c.Long(nullable: false, identity: true),
                     CategoryKey = c.String(nullable: false),
                     Question = c.String(nullable:false)                    
                 })

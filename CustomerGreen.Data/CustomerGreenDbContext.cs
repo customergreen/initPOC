@@ -74,6 +74,9 @@ namespace CustomerGreen.Data
         public virtual IDbSet<Question> Questions { get; set; }
         public virtual IDbSet<Menu> Menus { get; set; }
         public virtual IDbSet<MenuAccess> MenuAccess { get; set; }
+        public virtual IDbSet<Brand> Brands { get; set; }
+        public virtual IDbSet<BrandLocation> BrandLocations { get; set; }
+
         #endregion
 
         #region IDbContext

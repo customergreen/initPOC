@@ -11,7 +11,7 @@ namespace CustomerGreen.Data.Migrations
                 "dbo.MenuAccess",
                 c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
+                        Id = c.Long(nullable: false, identity: true),
                         Read = c.Boolean(nullable: false),
                         Update = c.Boolean(nullable: false),
                         CreatedDate = c.DateTime(nullable: false),
@@ -31,7 +31,7 @@ namespace CustomerGreen.Data.Migrations
                 "dbo.Menus",
                 c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
+                        Id = c.Long(nullable: false, identity: true),
                         Name = c.String(),
                         Url = c.String(),
                         DisplayName = c.String(),

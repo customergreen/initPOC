@@ -108,6 +108,10 @@
     <Compile Include="Migrations\201608050606028_MenuTables.Designer.cs">
       <DependentUpon>201608050606028_MenuTables.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201608051455427_BrandsAndLocations.cs" />
+    <Compile Include="Migrations\201608051455427_BrandsAndLocations.Designer.cs">
+      <DependentUpon>201608051455427_BrandsAndLocations.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
     <Compile Include="Configurations\ContactConfiguration.cs" />
@@ -144,6 +148,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201608050606028_MenuTables.resx">
       <DependentUpon>201608050606028_MenuTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608051455427_BrandsAndLocations.resx">
+      <DependentUpon>201608051455427_BrandsAndLocations.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

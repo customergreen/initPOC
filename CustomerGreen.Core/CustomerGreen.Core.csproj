@@ -57,6 +57,8 @@
     <Compile Include="Data\Repositories\IRepository.cs" />
     <Compile Include="Data\IUnitOfWork.cs" />
     <Compile Include="Entities\ApplicationUser.cs" />
+    <Compile Include="Entities\Brand.cs" />
+    <Compile Include="Entities\BrandLocation.cs" />
     <Compile Include="Entities\BusinessSubType.cs" />
     <Compile Include="Entities\BusinessType.cs" />
     <Compile Include="Entities\CheckoutPoint.cs" />

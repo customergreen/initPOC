@@ -11,8 +11,8 @@ namespace CustomerGreen.Data.Migrations
                 "dbo.CheckoutPoints",
                 c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
-                        OrgId = c.Int(nullable: false),
+                        Id = c.Long(nullable: false, identity: true),
+                        OrgId = c.Long(nullable: false),
                         CheckoutLocation = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
@@ -21,8 +21,8 @@ namespace CustomerGreen.Data.Migrations
                 "dbo.FeedbackCategories",
                 c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
-                        OrgId = c.Int(nullable: false),
+                        Id = c.Long(nullable: false, identity: true),
+                        OrgId = c.Long(nullable: false),
                         CategoryKey = c.String(),
                         Category = c.String(),
                     })
@@ -32,8 +32,8 @@ namespace CustomerGreen.Data.Migrations
                 "dbo.Questions",
                 c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
-                        OrgId = c.Int(nullable: false),
+                        Id = c.Long(nullable: false, identity: true),
+                        OrgId = c.Long(nullable: false),
                         CategoryKey = c.String(),
                         FeedbackQuestion = c.String(),
                     })
@@ -43,8 +43,8 @@ namespace CustomerGreen.Data.Migrations
                 "dbo.Titles",
                 c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
-                        OrgId = c.Int(nullable: false),
+                        Id = c.Long(nullable: false, identity: true),
+                        OrgId = c.Long(nullable: false),
                         FeedbackTitle = c.String(),
                     })
                 .PrimaryKey(t => t.Id);

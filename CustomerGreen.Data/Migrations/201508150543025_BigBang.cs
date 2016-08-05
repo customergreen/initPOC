@@ -101,7 +101,7 @@ namespace CustomerGreen.Data.Migrations
                 "dbo.Contacts",
                 c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
+                        Id = c.Long(nullable: false, identity: true),
                         FirstName = c.String(nullable: false, maxLength: 100),
                         LastName = c.String(nullable: false, maxLength: 100),
                         Email = c.String(nullable: false, maxLength: 250),
