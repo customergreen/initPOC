@@ -100,6 +100,14 @@
     <Compile Include="Migrations\201608030834343_CreateMenuRoles.Designer.cs">
       <DependentUpon>201608030834343_CreateMenuRoles.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201608050603429_FeedBackTables.cs" />
+    <Compile Include="Migrations\201608050603429_FeedBackTables.Designer.cs">
+      <DependentUpon>201608050603429_FeedBackTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608050606028_MenuTables.cs" />
+    <Compile Include="Migrations\201608050606028_MenuTables.Designer.cs">
+      <DependentUpon>201608050606028_MenuTables.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
     <Compile Include="Configurations\ContactConfiguration.cs" />
@@ -130,6 +138,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201608030834343_CreateMenuRoles.resx">
       <DependentUpon>201608030834343_CreateMenuRoles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608050603429_FeedBackTables.resx">
+      <DependentUpon>201608050603429_FeedBackTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608050606028_MenuTables.resx">
+      <DependentUpon>201608050606028_MenuTables.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
