@@ -257,6 +257,7 @@
     <Content Include="App\Templates\Shared\_404.html" />
     <Content Include="Assets\fonts\LICENSE.txt" />
     <Content Include="Assets\fonts\Material-Design-Icons.svg" />
+    <Content Include="Assets\Scripts\angular\angular-ui-router.js" />
     <Content Include="Assets\Scripts\material.js" />
     <Content Include="Assets\Scripts\ripples.js" />
     <Content Include="Assets\Styles\bootstrap-theme.css" />
