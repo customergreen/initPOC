@@ -57,18 +57,34 @@
     <Compile Include="Data\Repositories\IRepository.cs" />
     <Compile Include="Data\IUnitOfWork.cs" />
     <Compile Include="Entities\ApplicationUser.cs" />
+    <Compile Include="Entities\Brand.cs" />
+    <Compile Include="Entities\BrandLocation.cs" />
     <Compile Include="Entities\BusinessSubType.cs" />
     <Compile Include="Entities\BusinessType.cs" />
+    <Compile Include="Entities\CheckoutPoint.cs" />
     <Compile Include="Entities\Contact.cs" />
+    <Compile Include="Entities\FeedbackCategory.cs" />
     <Compile Include="Entities\Foundation\AuditableEntity.cs" />
     <Compile Include="Entities\Foundation\BaseEntity.cs" />
     <Compile Include="Entities\Foundation\IAuditableEntity.cs" />
     <Compile Include="Entities\Foundation\IEntity.cs" />
     <Compile Include="Entities\LisenceType.cs" />
+    <Compile Include="Entities\Menu.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\MenuAccess.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Entities\OrganizationDetails.cs" />
     <Compile Include="Entities\OrganizationProfile.cs" />
+    <Compile Include="Entities\Question.cs" />
+    <Compile Include="Entities\Title.cs" />
     <Compile Include="Logging\ILogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ILicenseTypeService.cs" />
+    <Compile Include="Services\IBusinessSubTypeService.cs" />
+    <Compile Include="Services\IBusinessTypeService.cs" />
+    <Compile Include="Services\IOrganizationService.cs" />
     <Compile Include="Services\IContactService.cs" />
     <Compile Include="Services\IService.cs" />
   </ItemGroup>

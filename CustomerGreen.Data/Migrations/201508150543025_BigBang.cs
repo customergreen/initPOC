@@ -10,7 +10,7 @@ namespace CustomerGreen.Data.Migrations
         public override void Up()
         {
             CreateTable(
-                "dbo.LisenceTypes",
+                "dbo.LicenseTypes",
                 c => new
                 {
                     Id = c.Long(nullable: false, identity: true),
@@ -21,7 +21,7 @@ namespace CustomerGreen.Data.Migrations
                     Active = c.Boolean(nullable: false)
                 })
                 .PrimaryKey(t => t.Id)
-                .Index(t => t.License, unique: true, name: "LisenceTypeIndex");
+                .Index(t => t.License, unique: true, name: "LicenseTypeIndex");
 
             CreateTable(
                 "dbo.BusinessType",
@@ -55,7 +55,7 @@ namespace CustomerGreen.Data.Migrations
                     Mobile = c.String(),
                     BusinessTypeId = c.Long(nullable:true),
                     BusinessSubTypeId = c.Long(nullable:true),
-                    LisenceTypeId = c.Long(nullable:false),
+                    LicenseTypeId = c.Long(nullable:false),
                     ContactEmail  = c.String(nullable:false),
                     StrategicEmail = c.String(nullable:false),
                     TacticalEmail = c.String(nullable:false),
@@ -68,10 +68,14 @@ namespace CustomerGreen.Data.Migrations
                     State = c.String(),
                     Zip = c.String(),
                     IsActive = c.Boolean(defaultValue:true),
-                    Logo = c.Byte()
+                    Logo = c.Byte(),
+                    CreatedDate = c.DateTime(nullable: false),
+                    CreatedBy = c.String(maxLength: 256),
+                    UpdatedDate = c.DateTime(nullable: false),
+                    UpdatedBy = c.String(maxLength: 256),
                 })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.LisenceTypes", t => t.LisenceTypeId)
+                .ForeignKey("dbo.LicenseTypes", t => t.LicenseTypeId)
                 .Index(t => t.OrgKey, unique: true, name: "OrgKeyIndex");
 
             CreateTable(
@@ -84,7 +88,11 @@ namespace CustomerGreen.Data.Migrations
                     DueDate = c.DateTime(nullable:false),
                     PaymentReceived = c.Boolean(defaultValue:false),
                     PaymentDue = c.Double(),
-                    LocationCount = c.Int()
+                    LocationCount = c.Int(),
+                    CreatedDate = c.DateTime(nullable: false),
+                    CreatedBy = c.String(maxLength: 256),
+                    UpdatedDate = c.DateTime(nullable: false),
+                    UpdatedBy = c.String(maxLength: 256),
                 })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Organizations", t => t.OrgId);
@@ -93,7 +101,7 @@ namespace CustomerGreen.Data.Migrations
                 "dbo.Contacts",
                 c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
+                        Id = c.Long(nullable: false, identity: true),
                         FirstName = c.String(nullable: false, maxLength: 100),
                         LastName = c.String(nullable: false, maxLength: 100),
                         Email = c.String(nullable: false, maxLength: 250),
@@ -185,7 +193,11 @@ namespace CustomerGreen.Data.Migrations
                 .ForeignKey("dbo.Organizations", t => t.OrgId, cascadeDelete: true)
                 .Index(t => t.Name, unique: true, name: "RoleNameIndex")
                 .Index(t => t.OrgId);
-            
+
+            AddColumn("dbo.AspNetUsers", "OrgId", c => c.Long(nullable: false));
+            AddColumn("dbo.AspNetRoles", "OrgId", c => c.Long());
+            AddColumn("dbo.AspNetRoles", "DisplayName", c => c.String());
+            AddColumn("dbo.AspNetRoles", "Discriminator", c => c.String(nullable: false, maxLength: 128));
         }
         
         public override void Down()
@@ -212,7 +224,7 @@ namespace CustomerGreen.Data.Migrations
             DropTable("dbo.Organizations");
             DropTable("dbo.BusinessSubType");
             DropTable("dbo.BusinessType");
-            DropTable("dbo.LisenceTypes");
+            DropTable("dbo.LicenseTypes");
         }
     }
 }

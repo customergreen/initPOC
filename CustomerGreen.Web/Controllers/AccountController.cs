@@ -1,7 +1,11 @@
-﻿using CustomerGreen.Core.Entities;
+﻿using System.Linq;
+using System.Net;
+using CustomerGreen.Core.Entities;
+using CustomerGreen.Data;
 using CustomerGreen.Web.Models;
 using CustomerGreen.Web.Providers;
 using CustomerGreen.Web.Results;
+using CustomerGreen.Core.Services;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
@@ -16,7 +20,6 @@ using System.Security.Cryptography;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
-using System.Web.Http.ModelBinding;
 
 namespace CustomerGreen.Web.Controllers
 {
@@ -25,16 +28,17 @@ namespace CustomerGreen.Web.Controllers
     {
         private const string LocalLoginProvider = "Local";
         private ApplicationUserManager _userManager;
+        private readonly IOrganizationService _organizationService;
 
         public AccountController()
         {
         }
 
         public AccountController(ApplicationUserManager userManager,
-            ISecureDataFormat<AuthenticationTicket> accessTokenFormat)
+            ISecureDataFormat<AuthenticationTicket> accessTokenFormat,IOrganizationService organizationService)
         {
             UserManager = userManager;
-            AccessTokenFormat = accessTokenFormat;
+            AccessTokenFormat = accessTokenFormat;            
         }
 
         public ApplicationUserManager UserManager
@@ -328,22 +332,71 @@ namespace CustomerGreen.Web.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new ApplicationUser() 
-            {
-                FirstName = model.FirstName,
-                LastName = model.LastName,
-                UserName = model.Email, 
-                Email = model.Email
-            };
+            //Check if user already exists
+            var checkUser = UserManager.FindByName(model.Email);
+            if (checkUser != null)            
+                return BadRequest("Email already registered! Please enter a new one");            
 
-            IdentityResult result = await UserManager.CreateAsync(user, model.Password);
-
-            if (!result.Succeeded)
+            using (var dbContext = new CustomerGreenDbContext())
             {
-                return GetErrorResult(result);
+                //use dbContext
+
+                //Create Organization Here
+                
+                //skip OrgKey
+
+                var org = new OrganizationProfile
+                {
+                    BusinessType = model.BusinessType != 0? dbContext.BusinessTypes.FirstOrDefault(b => b.Id == model.BusinessType):null,
+                    BusinessSubType = model.BusinessSubType != 0 ? dbContext.BusinessSubTypes.FirstOrDefault(b => b.Id == model.BusinessSubType) : null,
+                    CompanyName = model.CompanyName,
+                    LicenseType = dbContext.LicenseTypes.FirstOrDefault(b => b.Id == model.LicenseType),
+                    ContactEmail = model.Email,
+                    StrategicEmail = model.Email,
+                    TacticalEmail = model.Email                   
+                };
+
+                //Save Org
+                dbContext.Organizations.Add(org);
+                dbContext.SaveChanges();
+                //get saved org.
+                var newOrg = dbContext.Organizations.FirstOrDefault(o => o.CompanyName == model.CompanyName);
+                
+                if (newOrg != null)
+                {
+                    //todo
+                    //Initialize org code first three chars + _org_id like in vipasi
+
+                    //var orgCode = model.CompanyName.Substring(0,3) 
+
+                    //update org and save changes.
+
+
+                    //Create 'Admin' User Role in Roles table 
+
+                    //Create User
+                    var user = new ApplicationUser()
+                    {
+                        FirstName = model.FirstName,
+                        LastName = model.LastName,
+                        UserName = model.Email,
+                        Email = model.Email,
+                        //org Id
+                    };
+
+                    IdentityResult result = await UserManager.CreateAsync(user, model.Password);
+
+                    if (!result.Succeeded)
+                    {
+                        return GetErrorResult(result);
+                    }
+
+                    //Map User and Role in User Roles Table
+
+                    return Ok();
+                }
+                return BadRequest("Unable to Register, Please Try again!!");
             }
-
-            return Ok();
         }
 
         // POST api/Account/RegisterExternal

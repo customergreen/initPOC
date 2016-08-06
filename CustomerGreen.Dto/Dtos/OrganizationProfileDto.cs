@@ -8,7 +8,7 @@
         public string Mobile { get; set; }
         public string BusinessTypeId { get; set; }
         public string BusinessSubTypeId { get; set; }
-        public string LisenceTypeId { get; set; }
+        public string LicenseTypeId { get; set; }
         public string ContactEmail { get; set; }        
         public string StrategicEmail { get; set; }        
         public string TacticalEmail { get; set; }       

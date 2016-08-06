@@ -92,6 +92,26 @@
     <Compile Include="Migrations\201508150543025_BigBang.Designer.cs">
       <DependentUpon>201508150543025_BigBang.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201608030534079_CreateDefaultMasterTables.cs" />
+    <Compile Include="Migrations\201608030534079_CreateDefaultMasterTables.Designer.cs">
+      <DependentUpon>201608030534079_CreateDefaultMasterTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608030834343_CreateMenuRoles.cs" />
+    <Compile Include="Migrations\201608030834343_CreateMenuRoles.Designer.cs">
+      <DependentUpon>201608030834343_CreateMenuRoles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608050603429_FeedBackTables.cs" />
+    <Compile Include="Migrations\201608050603429_FeedBackTables.Designer.cs">
+      <DependentUpon>201608050603429_FeedBackTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608050606028_MenuTables.cs" />
+    <Compile Include="Migrations\201608050606028_MenuTables.Designer.cs">
+      <DependentUpon>201608050606028_MenuTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608051455427_BrandsAndLocations.cs" />
+    <Compile Include="Migrations\201608051455427_BrandsAndLocations.Designer.cs">
+      <DependentUpon>201608051455427_BrandsAndLocations.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
     <Compile Include="Configurations\ContactConfiguration.cs" />
@@ -116,6 +136,21 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201508150543025_BigBang.resx">
       <DependentUpon>201508150543025_BigBang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608030534079_CreateDefaultMasterTables.resx">
+      <DependentUpon>201608030534079_CreateDefaultMasterTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608030834343_CreateMenuRoles.resx">
+      <DependentUpon>201608030834343_CreateMenuRoles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608050603429_FeedBackTables.resx">
+      <DependentUpon>201608050603429_FeedBackTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608050606028_MenuTables.resx">
+      <DependentUpon>201608050606028_MenuTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608051455427_BrandsAndLocations.resx">
+      <DependentUpon>201608051455427_BrandsAndLocations.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

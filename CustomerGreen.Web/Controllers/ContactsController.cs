@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
 using System.Threading.Tasks;
 using System.Web.Http;
-using System.Web.Http.ModelBinding;
 
 namespace CustomerGreen.Web.Controllers
 {

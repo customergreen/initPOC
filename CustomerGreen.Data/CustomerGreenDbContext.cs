@@ -63,11 +63,20 @@ namespace CustomerGreen.Data
 
         #region DbSets
         public virtual IDbSet<Contact> Contacts { get; set; }
-        public virtual IDbSet<LisenceType> LisenceTypes{ get; set; }
+        public virtual IDbSet<LicenseType> LicenseTypes{ get; set; }
         public virtual IDbSet<BusinessType> BusinessTypes { get; set; }
         public virtual IDbSet<BusinessSubType> BusinessSubTypes { get; set; }
         public virtual IDbSet<OrganizationDetails> OrganizationDetail { get; set; }
         public virtual IDbSet<OrganizationProfile> Organizations { get; set; }
+        public virtual IDbSet<FeedbackCategory> FeedbackCategories { get; set; }
+        public virtual IDbSet<Title> Titles { get; set; }
+        public virtual IDbSet<CheckoutPoint> CheckoutPoints { get; set; }
+        public virtual IDbSet<Question> Questions { get; set; }
+        public virtual IDbSet<Menu> Menus { get; set; }
+        public virtual IDbSet<MenuAccess> MenuAccess { get; set; }
+        public virtual IDbSet<Brand> Brands { get; set; }
+        public virtual IDbSet<BrandLocation> BrandLocations { get; set; }
+
         #endregion
 
         #region IDbContext
