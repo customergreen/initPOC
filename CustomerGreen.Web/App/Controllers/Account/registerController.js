@@ -8,7 +8,7 @@
     RegisterController.$inject = ['$scope', '$location', '$timeout', 'AuthService', 'registerFactory'];
 
     function RegisterController($scope, $location, $timeout, AuthService) {
-        getData();
+        // getData();
         $scope.savedSuccessfully = false;
         $scope.message = "";
 
