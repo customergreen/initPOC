@@ -1,0 +1,56 @@
+﻿<div>
+    <form class="form-horizontal" name="registrationForm" method="post">
+        <fieldset>
+            <div class="form-group">
+                <label for="name" class="col-lg-2 control-label">Legal Name</label>
+                <div class="col-lg-10" id="name">
+                    <input type="text" class="form-control"  placeholder="First name" ng-model="registration.firstName" required>
+                    <input type="text" class="form-control"  placeholder="Last name" ng-model="registration.lastName" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="add" class="col-lg-2 control-label">Legal Name</label>
+                <div class="col-lg-10" id="add">
+                    <input type="text" class="form-control"  placeholder="Home Address" ng-model="registration.home" required>
+                    <input type="text" class="form-control"  placeholder="Apt/unit" ng-model="registration.apt" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="zip" class="col-lg-2 control-label">Zip Code</label>
+                <div class="col-lg-10">
+                    <input type="number" class="form-control" id="zip" name="zip" placeholder="Zip Code" ng-model="registration.zip" required ng-minlength="5">                   
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="city" class="col-lg-2 control-label">City</label>
+                <div class="col-lg-10">
+                    <input type="text" class="form-control" id="city" name="city" placeholder="City" ng-model="registration.city" required ng-minlength="20">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="state" class="col-lg-2 control-label">State</label>
+                <div class="col-lg-10">
+                    <input type="text" class="form-control" id="state" name="state" placeholder="State" ng-model="registration.state" required ng-minlength="5">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="ssn" class="col-lg-2 control-label">Last 4 digits of SSN</label>
+                <div class="col-lg-10">
+                    <input type="number" class="form-control" id="ssn" name="ssn" placeholder="0000" ng-model="registration.ssn" required ng-minlength="4">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="phone" class="col-lg-2 control-label">Phone Number</label>
+                <div class="col-lg-10">
+                    <input type="number" class="form-control" id="phone" name="phone" placeholder="(000)000-0000" ng-model="registration.phone" required ng-minlength="410
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-offset-7">
+                    <button type="submit" class="btn btn-primary">Continue</button>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+</div>

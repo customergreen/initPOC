@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('customerGreenApp', [
-        'ngAnimate', 'ngCookies', 'ngResource', 'ngRoute', 'ngSanitize', 'ngTouch', 'ui.bootstrap'
+        'ngAnimate', 'ngCookies', 'ngResource', 'ngSanitize', 'ngTouch', 'ui.bootstrap', 'ui.router'
     ])
     .config(['$httpProvider', function ($httpProvider) {
         $httpProvider.interceptors.push('xmlHttpInteceptor');

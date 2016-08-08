@@ -31,6 +31,7 @@ namespace CustomerGreen.Web
                 "~/Assets/Scripts/angular/i18n/angular-locale_en-us.js",
                 "~/Assets/Scripts/angular/ui-bootstrap.js",
                 "~/Assets/Scripts/angular/ui-bootstrap-tpls.js",
+                "~/Assets/Scripts/angular/angular-ui-router.js",
                 "~/App/app.js"
                 ));
 

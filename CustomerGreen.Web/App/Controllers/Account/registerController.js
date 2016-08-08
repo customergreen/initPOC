@@ -12,6 +12,13 @@
         $scope.savedSuccessfully = false;
         $scope.message = "";
 
+        $scope.details = {
+            country: ["United States", "Canada", "India"],
+            b1: ["Please Select.."], b2: ["Please Select"],
+            plan: ["Select usage type.."],
+            rev: ["Select estimated revenue"]
+        }
+
         $scope.registration = {
             firstName: "",
             lastName: "",

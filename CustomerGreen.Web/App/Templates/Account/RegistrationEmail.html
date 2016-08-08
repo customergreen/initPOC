@@ -1,0 +1,43 @@
+﻿<div>
+    <form class="form-horizontal" name="registrationForm" method="post">
+        <fieldset>
+            <div class="form-group">
+                <label for="inputEmail" class="col-lg-2 control-label">Enter your email</label>
+                <div class="col-lg-10">
+                    <input type="email" class="form-control" id="inputEmail" name="email" placeholder="Email" ng-model="registration.email" ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/" required>
+                    <p ng-show="registrationForm.email.$invalid && !registrationForm.email.$pristine" class="help-block"> Email is required. (format, e.g. email@email.com)</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail" class="col-lg-2 control-label">Confirm your email</label>
+                <div class="col-lg-10">
+                    <input type="email" class="form-control" id="inputEmail" name="email" placeholder="Email" ng-model="registration.cemail" ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/" required>
+                    <p ng-show="registrationForm.email.$invalid && !registrationForm.email.$pristine" class="help-block"> Email is required. (format, e.g. email@email.com)</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputPassword" class="col-lg-2 control-label">Create a password</label>
+                <div class="col-lg-10">
+                    <input type="password" class="form-control" id="inputPassword" name="password" placeholder="Password" ng-model="registration.password" required ng-minlength="6">
+                    <p ng-show="registrationForm.password.$invalid && !registrationForm.password.$pristine" class="help-block"> Password must be at least 6 characters. </p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="inputPassword" class="col-lg-2 control-label">Country</label>
+                <div class="col-lg-10">
+                    <select ng-model="registration.country">
+                        <option ng-repeat="x in details.country" value="{{x.index}}">{{x}}</option>
+                    </select>                   
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-offset-7">
+                                        
+                    <button type="submit" ui-sref="register.business" class="btn btn-primary">Continue</button>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+</div>

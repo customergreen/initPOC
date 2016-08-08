@@ -1,0 +1,57 @@
+﻿<div>
+    <form class="form-horizontal" name="registrationForm" method="post">
+        <fieldset>
+            <div class="form-group">
+                <label for="inputPassword" class="col-lg-2 control-label">What type of business is it?</label>
+                <div class="col-lg-10">
+                    <select ng-model="registration.b1">
+                        <option ng-repeat="x in details.b1" value="{{x.index}}">{{x}}</option>
+                    </select>  
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputPassword" class="col-lg-2 control-label">What type of business is it?</label>
+                <div class="col-lg-10">
+                    <select ng-model="registration.b2">                        
+                        <option ng-repeat="x in details.b2" value="{{x.index}}">{{x}}</option>
+                    </select>  
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="bname" class="col-lg-2 control-label">What is your business name? </label>
+                <div class="col-lg-10">
+                    <input type="text" class="form-control" id="bname" name="bname" placeholder="Business Name" ng-model="registration.bname" required>                    
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="id" class="col-lg-2 control-label">Employer Identification Number (optional)</label>
+                <div class="col-lg-10">
+                    <input type="text" class="form-control" id="id" name="id" placeholder="00-000000000" ng-model="registration.id" required ng-minlength="12">                   
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputPassword" class="col-lg-2 control-label">Estimated annual revenue</label>
+                <div class="col-lg-10">
+                    <select ng-model="registration.rev">
+                        <option ng-repeat="x in details.rev" value="{{x.index}}">{{x}}</option>
+                    </select>  
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputPassword" class="col-lg-2 control-label">How do you plan to use Square?</label>
+                <div class="col-lg-10">
+                    <select ng-model="registration.plan">
+                        <option ng-repeat="x in details.plan" value="{{x.index}}">{{x}}</option>
+                    </select>  
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-offset-7">
+
+                    <button type="submit" ui-sref="register.details" class="btn btn-primary">Continue</button>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+</div>

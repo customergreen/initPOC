@@ -251,6 +251,9 @@
     <Content Include="App\Services\Interceptors\xmlHttpInterceptor.js" />
     <Content Include="App\Templates\Account\Login.html" />
     <Content Include="App\Templates\Account\Register.html" />
+    <Content Include="App\Templates\Account\RegistrationBusiness.html" />
+    <Content Include="App\Templates\Account\RegistrationDetails.html" />
+    <Content Include="App\Templates\Account\RegistrationEmail.html" />
     <Content Include="App\Templates\Contact\AddContact.html" />
     <Content Include="App\Templates\Contact\ContactFormModal.html" />
     <Content Include="App\Templates\Contact\Index.html" />
