@@ -9,7 +9,7 @@ using System.Web.Http;
 
 namespace CustomerGreen.Web.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [RoutePrefix("api/businessSubTypes")]
     public class BusinessSubTypesController : ApiController
     {
@@ -21,6 +21,7 @@ namespace CustomerGreen.Web.Controllers
         }
 
         [HttpGet]
+        [Route("GetBusinessSubTypes")]
         public async Task<IHttpActionResult> GetBusinessSubTypes()
         {
             var businessSubTypes = await _businessSubTypeService.GetAllAsync();
@@ -28,7 +29,7 @@ namespace CustomerGreen.Web.Controllers
             var businessSubTypesDtos = new List<BusinessSubTypeDto>();
 
             Mapper.Map(businessSubTypes, businessSubTypesDtos);
-            
+
             return Ok(businessSubTypesDtos);
         }
 
@@ -70,7 +71,7 @@ namespace CustomerGreen.Web.Controllers
                 Mapper.Map(businessSubTypeDto, businessSubType);
 
                 await _businessSubTypeService.UpdateAsync(businessSubType);
-              
+
                 return Ok(businessSubTypeDto);
             }
             catch (DbUpdateConcurrencyException)
@@ -95,7 +96,7 @@ namespace CustomerGreen.Web.Controllers
             }
 
             var businessSubType = new BusinessSubType();
-            
+
             Mapper.Map(businessSubTypeDto, businessSubType);
 
             businessSubType = await _businessSubTypeService.AddAsync(businessSubType);

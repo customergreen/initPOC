@@ -244,6 +244,7 @@
     <Content Include="App\Controllers\Global\globalController.js" />
     <Content Include="App\Route\routeConfig.js" />
     <Content Include="App\Services\Account\authService.js" />
+    <Content Include="App\Services\Account\registerService.js" />
     <Content Include="App\Services\Account\storageHandler.js" />
     <Content Include="App\Services\Account\tokenHandler.js" />
     <Content Include="App\Services\Contact\contactService.js" />
