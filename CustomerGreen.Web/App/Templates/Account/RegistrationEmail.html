@@ -27,7 +27,8 @@
                 <label for="inputPassword" class="col-lg-2 control-label">Country</label>
                 <div class="col-lg-10">
                     <select ng-model="registration.country">
-                        <option ng-repeat="x in details.country" value="{{x.index}}">{{x}}</option>
+                        <option value="">Select Country</option>
+                        <option ng-repeat="x in details.country" value="{{x.id}}">{{x.name}}</option>
                     </select>                   
                 </div>
             </div>

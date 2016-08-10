@@ -1,6 +1,4 @@
-﻿using System.Linq;
-using System.Threading;
-using CustomerGreen.Core.Entities;
+﻿using CustomerGreen.Core.Entities;
 using CustomerGreen.Core.Logging;
 using CustomerGreen.Data.Configurations;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -10,6 +8,8 @@ using System.Data.Common;
 using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
 using System.Data.Entity.Infrastructure;
+using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace CustomerGreen.Data
@@ -63,7 +63,7 @@ namespace CustomerGreen.Data
 
         #region DbSets
         public virtual IDbSet<Contact> Contacts { get; set; }
-        public virtual IDbSet<LicenseType> LicenseTypes{ get; set; }
+        public virtual IDbSet<LicenseType> LicenseTypes { get; set; }
         public virtual IDbSet<BusinessType> BusinessTypes { get; set; }
         public virtual IDbSet<BusinessSubType> BusinessSubTypes { get; set; }
         public virtual IDbSet<OrganizationDetails> OrganizationDetail { get; set; }
@@ -76,6 +76,12 @@ namespace CustomerGreen.Data
         public virtual IDbSet<MenuAccess> MenuAccess { get; set; }
         public virtual IDbSet<Brand> Brands { get; set; }
         public virtual IDbSet<BrandLocation> BrandLocations { get; set; }
+
+        public virtual IDbSet<Country> Country { get; set; }
+
+        public virtual IDbSet<Revenue> Revenue { get; set; }
+
+        public virtual IDbSet<Plan> Plans { get; set; }
 
         #endregion
 

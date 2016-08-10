@@ -48,12 +48,19 @@
       <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\Repositories\BusinessTypeRepository.cs" />
     <Compile Include="Data\Repositories\IContactRepository.cs" />
+    <Compile Include="Data\Repositories\ICountryRepository.cs" />
     <Compile Include="Data\Repositories\IRepository.cs" />
     <Compile Include="Data\IUnitOfWork.cs" />
     <Compile Include="Entities\ApplicationUser.cs" />
@@ -63,6 +70,7 @@
     <Compile Include="Entities\BusinessType.cs" />
     <Compile Include="Entities\CheckoutPoint.cs" />
     <Compile Include="Entities\Contact.cs" />
+    <Compile Include="Entities\Country.cs" />
     <Compile Include="Entities\FeedbackCategory.cs" />
     <Compile Include="Entities\Foundation\AuditableEntity.cs" />
     <Compile Include="Entities\Foundation\BaseEntity.cs" />
@@ -81,6 +89,7 @@
     <Compile Include="Entities\Title.cs" />
     <Compile Include="Logging\ILogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ICountryService.cs" />
     <Compile Include="Services\ILicenseTypeService.cs" />
     <Compile Include="Services\IBusinessSubTypeService.cs" />
     <Compile Include="Services\IBusinessTypeService.cs" />

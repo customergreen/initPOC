@@ -7,35 +7,37 @@
 
     RegisterController.$inject = ['$scope', '$location', '$timeout', 'AuthService', 'registerFactory'];
 
-    function RegisterController($scope, $location, $timeout, AuthService) {
-        // getData();
+    function RegisterController($scope, $location, $timeout, AuthService, registerFactory) {
         $scope.savedSuccessfully = false;
         $scope.message = "";
 
-        $scope.details = {
-            country: ["United States", "Canada", "India"],
-            b1: ["Please Select.."], b2: ["Please Select.."], // dependency dropdown
-            plan: ["Select usage type.."],
-            rev: ["Select estimated revenue"]
-        }
-        function getData() {
-            $scope.details.country = registerFactory.country();
-            $scope.details.b1 = registerFactory.b1();
-            $scope.details.plan = registerFactory.plan();
-            $scope.details.rev = registerFactory.rev();
-        }
-
+        registerFactory.details().then(function (d) {
+            $scope.details = d;
+        });        
+        
         $scope.registration = {
             firstName: "",
             lastName: "",
             email: "",
+            cemail:"",
             companyName: "",
             userName: "",
             password: "",
-            conf_password: "",
-            business_type: "",
-            business_sub_type: "",
-            License_type: ""
+            //conf_password: "",
+            type: "",
+            subtype: "",
+            License_type: "",
+            rev: "",
+            plan: "",
+            country: "",
+            home: "",
+            apt: "",
+            zip: "",
+            city: "",
+            state: "",
+            ssn: "",
+            phone: "",
+            eid:""
         };
 
         $scope.signUp = function () {

@@ -1,8 +1,13 @@
-﻿namespace CustomerGreen.Dto.Dtos
+﻿using Newtonsoft.Json;
+using System.Runtime.Serialization;
+
+namespace CustomerGreen.Dto.Dtos
 {
     public class BusinessSubTypeDto : BaseDto
     {
-        public string BusinessId { get; set; }
-        public string BusnessSubType { get; set; }
+        [JsonIgnore]
+        [IgnoreDataMember]
+        public BusinessTypeDto BusinessType { get; set; }
+        public string SubType { get; set; }
     }
 }
