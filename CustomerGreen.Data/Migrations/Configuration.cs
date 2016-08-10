@@ -1,4 +1,8 @@
-using System.Data.Entity.Migrations;
+using System;
+using System.Linq;
+using CustomerGreen.Core.Entities;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace CustomerGreen.Data.Migrations
 {
@@ -12,8 +16,9 @@ namespace CustomerGreen.Data.Migrations
         }
 
         protected override void Seed(CustomerGreenDbContext context)
-        {
-            //base.Seed(context);
+        {         
+
+            base.Seed(context);
         }
         // Add-Migration -ProjectName CustomerGreen.Data -StartUpProjectName CustomerGreen.Web -Verbose  
         // Update-Database -ProjectName CustomerGreen.Data -StartUpProjectName CustomerGreen.Web -Verbose      

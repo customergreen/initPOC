@@ -1,5 +1,3 @@
-using System.Transactions.Configuration;
-
 namespace CustomerGreen.Data.Migrations
 {
     using System;
@@ -193,10 +191,7 @@ namespace CustomerGreen.Data.Migrations
                 .ForeignKey("dbo.Organizations", t => t.OrgId, cascadeDelete: true)
                 .Index(t => t.Name, unique: true, name: "RoleNameIndex")
                 .Index(t => t.OrgId);
-
-            AddColumn("dbo.AspNetUsers", "OrgId", c => c.Long(nullable: false));
-            AddColumn("dbo.AspNetRoles", "OrgId", c => c.Long());
-            AddColumn("dbo.AspNetRoles", "DisplayName", c => c.String());
+            
             AddColumn("dbo.AspNetRoles", "Discriminator", c => c.String(nullable: false, maxLength: 128));
         }
         
