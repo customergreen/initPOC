@@ -1,8 +1,4 @@
-using System;
-using System.Linq;
-using CustomerGreen.Core.Entities;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
+using System.Data.Entity.Migrations;
 
 namespace CustomerGreen.Data.Migrations
 {
@@ -16,7 +12,7 @@ namespace CustomerGreen.Data.Migrations
         }
 
         protected override void Seed(CustomerGreenDbContext context)
-        {         
+        {
 
             base.Seed(context);
         }
