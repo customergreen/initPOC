@@ -22,7 +22,7 @@ namespace CustomerGreen.Data.Migrations
                 .Index(t => t.License, unique: true, name: "LicenseTypeIndex");
 
             CreateTable(
-                "dbo.BusinessType",
+                "dbo.BusinessTypes",
                 c => new
                 {
                     Id = c.Long(nullable: false, identity: true),
@@ -32,7 +32,7 @@ namespace CustomerGreen.Data.Migrations
                 .Index(t => t.Business, unique: true, name: "BusinessTypeIndex");
 
             CreateTable(
-                "dbo.BusinessSubType",
+                "dbo.BusinessSubTypes",
                 c => new
                 {
                     Id = c.Long(nullable: false,identity:true),
