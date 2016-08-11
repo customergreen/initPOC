@@ -1,4 +1,6 @@
-﻿using CustomerGreen.Core.Entities;
+﻿using System.Data.Entity.Validation;
+using System.Text;
+using CustomerGreen.Core.Entities;
 using CustomerGreen.Core.Logging;
 using CustomerGreen.Data.Configurations;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -76,13 +78,9 @@ namespace CustomerGreen.Data
         public virtual IDbSet<MenuAccess> MenuAccess { get; set; }
         public virtual IDbSet<Brand> Brands { get; set; }
         public virtual IDbSet<BrandLocation> BrandLocations { get; set; }
-
         public virtual IDbSet<Country> Country { get; set; }
-
         public virtual IDbSet<Revenue> Revenue { get; set; }
-
         public virtual IDbSet<Plan> Plans { get; set; }
-
         #endregion
 
         #region IDbContext
@@ -115,8 +113,30 @@ namespace CustomerGreen.Data
                     entity.UpdatedDate = now;
                 }
             }
+            try
+            {
+                return base.SaveChanges();
+            }
+            catch (DbEntityValidationException ex)
+            {
+                var sb = new StringBuilder();
 
-            return base.SaveChanges();
+                foreach (var failure in ex.EntityValidationErrors)
+                {
+                    sb.AppendFormat("{0} failed validation\n", failure.Entry.Entity.GetType());
+                    foreach (var error in failure.ValidationErrors)
+                    {
+                        sb.AppendFormat("- {0} : {1}", error.PropertyName, error.ErrorMessage);
+                        sb.AppendLine();
+                    }
+                }
+
+                throw new DbEntityValidationException(
+                    "Entity Validation Failed - errors follow:\n" +
+                    sb.ToString(), ex
+                ); // Add the original exception as the innerException
+            }
+            
         }
         public new IDbSet<TEntity> Set<TEntity>() where TEntity : BaseEntity
         {

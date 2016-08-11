@@ -7,13 +7,13 @@ namespace CustomerGreen.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class Ctrl : IMigrationMetadata
+    public sealed partial class SeedControlTables1 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Ctrl));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(SeedControlTables1));
         
         string IMigrationMetadata.Id
         {
-            get { return "201608101452125_Ctrl"; }
+            get { return "201608110642295_SeedControlTables1"; }
         }
         
         string IMigrationMetadata.Source

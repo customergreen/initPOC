@@ -5,18 +5,22 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CustomerGreen.Core.Entities
 {
+    [Table("Organizations")]
     public class OrganizationProfile : AuditableEntity
-    {        
+    {
+        [MaxLength(50)]
+        [Index(IsUnique = true)]
         public string OrgKey { get; set; }
 
         [Required(ErrorMessage = "Company Name is required")]
         [Display(Name = "Organization Name")]
-        [MaxLength(50)]
+        [MaxLength(500)]
+        [Index(IsUnique = true)]
         public string CompanyName { get; set; }
 
         [Required(ErrorMessage = "* Phone is required")]
         [Display(Name = "Phone")]
-        [RegularExpression(@"^\d{3}\d{3}\d{4}$", ErrorMessage = "Phone Number is not valid")]
+        //[RegularExpression(@"^\d{3}\d{3}\d{4}$", ErrorMessage = "Phone Number is not valid")]
         public string Phone { get; set; }
         public string Mobile { get; set; }
                 

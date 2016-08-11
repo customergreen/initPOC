@@ -3,7 +3,7 @@ namespace CustomerGreen.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class init : DbMigration
+    public partial class Init : DbMigration
     {
         public override void Up()
         {
@@ -60,16 +60,16 @@ namespace CustomerGreen.Data.Migrations
                         UpdatedBy = c.String(maxLength: 256),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.OrganizationProfiles", t => t.OrgId, cascadeDelete: true)
+                .ForeignKey("dbo.Organizations", t => t.OrgId, cascadeDelete: true)
                 .Index(t => t.OrgId);
             
             CreateTable(
-                "dbo.OrganizationProfiles",
+                "dbo.Organizations",
                 c => new
                     {
                         Id = c.Long(nullable: false, identity: true),
-                        OrgKey = c.String(),
-                        CompanyName = c.String(nullable: false, maxLength: 50),
+                        OrgKey = c.String(maxLength: 50),
+                        CompanyName = c.String(nullable: false, maxLength: 500),
                         Phone = c.String(nullable: false),
                         Mobile = c.String(),
                         ContactEmail = c.String(maxLength: 50),
@@ -99,6 +99,8 @@ namespace CustomerGreen.Data.Migrations
                 .ForeignKey("dbo.BusinessTypes", t => t.BusinessType_Id)
                 .ForeignKey("dbo.LicenseTypes", t => t.LicenseType_Id)
                 .ForeignKey("dbo.OrganizationDetails", t => t.OrganizationDetails_Id)
+                .Index(t => t.OrgKey, unique: true)
+                .Index(t => t.CompanyName, unique: true)
                 .Index(t => t.BusinessSubType_Id)
                 .Index(t => t.BusinessType_Id)
                 .Index(t => t.LicenseType_Id)
@@ -362,12 +364,12 @@ namespace CustomerGreen.Data.Migrations
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.OrganizationProfiles", "OrganizationDetails_Id", "dbo.OrganizationDetails");
-            DropForeignKey("dbo.OrganizationProfiles", "LicenseType_Id", "dbo.LicenseTypes");
-            DropForeignKey("dbo.OrganizationProfiles", "BusinessType_Id", "dbo.BusinessTypes");
-            DropForeignKey("dbo.OrganizationProfiles", "BusinessSubType_Id", "dbo.BusinessSubTypes");
+            DropForeignKey("dbo.Organizations", "OrganizationDetails_Id", "dbo.OrganizationDetails");
+            DropForeignKey("dbo.Organizations", "LicenseType_Id", "dbo.LicenseTypes");
+            DropForeignKey("dbo.Organizations", "BusinessType_Id", "dbo.BusinessTypes");
+            DropForeignKey("dbo.Organizations", "BusinessSubType_Id", "dbo.BusinessSubTypes");
             DropForeignKey("dbo.BusinessSubTypes", "BusinessType_Id", "dbo.BusinessTypes");
-            DropForeignKey("dbo.Brands", "OrgId", "dbo.OrganizationProfiles");
+            DropForeignKey("dbo.Brands", "OrgId", "dbo.Organizations");
             DropForeignKey("dbo.BrandLocations", "BrandId", "dbo.Brands");
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
             DropIndex("dbo.MenuAccess", new[] { "Menu_Id" });
@@ -379,10 +381,12 @@ namespace CustomerGreen.Data.Migrations
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.Contacts", new[] { "ApplicationUserId" });
             DropIndex("dbo.BusinessSubTypes", new[] { "BusinessType_Id" });
-            DropIndex("dbo.OrganizationProfiles", new[] { "OrganizationDetails_Id" });
-            DropIndex("dbo.OrganizationProfiles", new[] { "LicenseType_Id" });
-            DropIndex("dbo.OrganizationProfiles", new[] { "BusinessType_Id" });
-            DropIndex("dbo.OrganizationProfiles", new[] { "BusinessSubType_Id" });
+            DropIndex("dbo.Organizations", new[] { "OrganizationDetails_Id" });
+            DropIndex("dbo.Organizations", new[] { "LicenseType_Id" });
+            DropIndex("dbo.Organizations", new[] { "BusinessType_Id" });
+            DropIndex("dbo.Organizations", new[] { "BusinessSubType_Id" });
+            DropIndex("dbo.Organizations", new[] { "CompanyName" });
+            DropIndex("dbo.Organizations", new[] { "OrgKey" });
             DropIndex("dbo.Brands", new[] { "OrgId" });
             DropIndex("dbo.BrandLocations", new[] { "BrandId" });
             DropTable("dbo.Titles");
@@ -404,7 +408,7 @@ namespace CustomerGreen.Data.Migrations
             DropTable("dbo.LicenseTypes");
             DropTable("dbo.BusinessTypes");
             DropTable("dbo.BusinessSubTypes");
-            DropTable("dbo.OrganizationProfiles");
+            DropTable("dbo.Organizations");
             DropTable("dbo.Brands");
             DropTable("dbo.BrandLocations");
         }
