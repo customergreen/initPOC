@@ -101,6 +101,10 @@
     <Compile Include="Migrations\201608110644542_SeedControlTables2.Designer.cs">
       <DependentUpon>201608110644542_SeedControlTables2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201608111443241_SeedControlTables3.cs" />
+    <Compile Include="Migrations\201608111443241_SeedControlTables3.Designer.cs">
+      <DependentUpon>201608111443241_SeedControlTables3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
     <Compile Include="Configurations\ContactConfiguration.cs" />
@@ -132,6 +136,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201608110644542_SeedControlTables2.resx">
       <DependentUpon>201608110644542_SeedControlTables2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608111443241_SeedControlTables3.resx">
+      <DependentUpon>201608111443241_SeedControlTables3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

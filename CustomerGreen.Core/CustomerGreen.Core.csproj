@@ -85,6 +85,7 @@
     </Compile>
     <Compile Include="Entities\OrganizationDetails.cs" />
     <Compile Include="Entities\OrganizationProfile.cs" />
+    <Compile Include="Entities\OrgSurveyGoal.cs" />
     <Compile Include="Entities\Question.cs" />
     <Compile Include="Entities\Title.cs" />
     <Compile Include="Logging\ILogger.cs" />
