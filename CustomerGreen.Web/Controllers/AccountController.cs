@@ -1,11 +1,9 @@
-﻿using System.Linq;
-using System.Net;
-using CustomerGreen.Core.Entities;
+﻿using CustomerGreen.Core.Entities;
+using CustomerGreen.Core.Services;
 using CustomerGreen.Data;
 using CustomerGreen.Web.Models;
 using CustomerGreen.Web.Providers;
 using CustomerGreen.Web.Results;
-using CustomerGreen.Core.Services;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
@@ -14,6 +12,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Security.Claims;
 using System.Security.Cryptography;
@@ -35,10 +34,10 @@ namespace CustomerGreen.Web.Controllers
         }
 
         public AccountController(ApplicationUserManager userManager,
-            ISecureDataFormat<AuthenticationTicket> accessTokenFormat,IOrganizationService organizationService)
+            ISecureDataFormat<AuthenticationTicket> accessTokenFormat, IOrganizationService organizationService)
         {
             UserManager = userManager;
-            AccessTokenFormat = accessTokenFormat;            
+            AccessTokenFormat = accessTokenFormat;
         }
 
         public ApplicationUserManager UserManager
@@ -129,7 +128,7 @@ namespace CustomerGreen.Web.Controllers
 
             IdentityResult result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword,
                 model.NewPassword);
-            
+
             if (!result.Succeeded)
             {
                 return GetErrorResult(result);
@@ -262,9 +261,9 @@ namespace CustomerGreen.Web.Controllers
             if (hasRegistered)
             {
                 Authentication.SignOut(DefaultAuthenticationTypes.ExternalCookie);
-                
-                 ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(UserManager,
-                    OAuthDefaults.AuthenticationType);
+
+                ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(UserManager,
+                   OAuthDefaults.AuthenticationType);
                 ClaimsIdentity cookieIdentity = await user.GenerateUserIdentityAsync(UserManager,
                     CookieAuthenticationDefaults.AuthenticationType);
 
@@ -322,6 +321,21 @@ namespace CustomerGreen.Web.Controllers
             return logins;
         }
 
+        [AllowAnonymous]
+        [HttpGet]
+        [Route("GetRegisterDetails")]
+        public async Task<IHttpActionResult> GetRegisterDetails()
+        {
+            //var businessSubTypes = await new BusinessSubTypesController().GetBusinessSubType();
+
+            //var businessSubTypesDtos = new List<BusinessSubTypeDto>();
+
+            //Mapper.Map(businessSubTypes, businessSubTypesDtos);
+
+            return Ok();
+        }
+
+
         // POST api/Account/Register
         [AllowAnonymous]
         [Route("Register")]
@@ -334,26 +348,26 @@ namespace CustomerGreen.Web.Controllers
 
             //Check if user already exists
             var checkUser = UserManager.FindByName(model.Email);
-            if (checkUser != null)            
-                return BadRequest("Email already registered! Please enter a new one");            
+            if (checkUser != null)
+                return BadRequest("Email already registered! Please enter a new one");
 
             using (var dbContext = new CustomerGreenDbContext())
             {
                 //use dbContext
 
                 //Create Organization Here
-                
+
                 //skip OrgKey
 
                 var org = new OrganizationProfile
                 {
-                    BusinessType = model.BusinessType != 0? dbContext.BusinessTypes.FirstOrDefault(b => b.Id == model.BusinessType):null,
+                    BusinessType = model.BusinessType != 0 ? dbContext.BusinessTypes.FirstOrDefault(b => b.Id == model.BusinessType) : null,
                     BusinessSubType = model.BusinessSubType != 0 ? dbContext.BusinessSubTypes.FirstOrDefault(b => b.Id == model.BusinessSubType) : null,
                     CompanyName = model.CompanyName,
                     LicenseType = dbContext.LicenseTypes.FirstOrDefault(b => b.Id == model.LicenseType),
                     ContactEmail = model.Email,
                     StrategicEmail = model.Email,
-                    TacticalEmail = model.Email                   
+                    TacticalEmail = model.Email
                 };
 
                 //Save Org
@@ -361,7 +375,7 @@ namespace CustomerGreen.Web.Controllers
                 dbContext.SaveChanges();
                 //get saved org.
                 var newOrg = dbContext.Organizations.FirstOrDefault(o => o.CompanyName == model.CompanyName);
-                
+
                 if (newOrg != null)
                 {
                     //todo
@@ -427,7 +441,7 @@ namespace CustomerGreen.Web.Controllers
             result = await UserManager.AddLoginAsync(user.Id, info.Login);
             if (!result.Succeeded)
             {
-                return GetErrorResult(result); 
+                return GetErrorResult(result);
             }
             return Ok();
         }

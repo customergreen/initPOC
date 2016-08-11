@@ -39,6 +39,7 @@
     <Compile Include="Services\BaseService.cs" />
     <Compile Include="Services\BusinessTypeService.cs" />
     <Compile Include="Services\BusinessSubTypeService.cs" />
+    <Compile Include="Services\CountryService.cs" />
     <Compile Include="Services\LicenseService.cs" />
     <Compile Include="Services\OrganizationService.cs" />
     <Compile Include="Services\ContactService.cs" />

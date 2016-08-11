@@ -4,16 +4,19 @@
             <div class="form-group">
                 <label for="inputPassword" class="col-lg-2 control-label">What type of business is it?</label>
                 <div class="col-lg-10">
-                    <select ng-model="registration.b1">
-                        <option ng-repeat="x in details.b1" value="{{x.index}}">{{x}}</option>
+                    <select ng-model="registration.type" ng-options="t.id as t.business for t in details.type track by t.id">
+                        <option value="">Please Select..</option>
+                        <option ng-repeat="x in details.type" value="{{x.type}}">{{x.id}}</option>
                     </select>  
                 </div>
-            </div>
+            </div>          
             <div class="form-group">
                 <label for="inputPassword" class="col-lg-2 control-label">What type of business is it?</label>
                 <div class="col-lg-10">
-                    <select ng-model="registration.b2">                        
-                        <option ng-repeat="x in details.b2" value="{{x.index}}">{{x}}</option>
+                    <select ng-model="registration.subtype" ng-disabled="!registration.type"
+                            ng-options="ty.id as ty.subType for ty in ((details.type | filter:{'id':registration.type})[0].subType) track by ty.id">                            
+                        <option value="">Please Select..</option>
+                        <!--<option ng-repeat="x in s = ( details.type | subType : registration.type )" value="{{x.subType}}">{{x.id}}</option>-->
                     </select>  
                 </div>
             </div>
@@ -26,14 +29,15 @@
             <div class="form-group">
                 <label for="id" class="col-lg-2 control-label">Employer Identification Number (optional)</label>
                 <div class="col-lg-10">
-                    <input type="text" class="form-control" id="id" name="id" placeholder="00-000000000" ng-model="registration.id" required ng-minlength="12">                   
+                    <input type="text" class="form-control" id="id" name="id" placeholder="00-000000000" ng-model="registration.eid" required ng-minlength="12">                   
                 </div>
             </div>
             <div class="form-group">
                 <label for="inputPassword" class="col-lg-2 control-label">Estimated annual revenue</label>
                 <div class="col-lg-10">
                     <select ng-model="registration.rev">
-                        <option ng-repeat="x in details.rev" value="{{x.index}}">{{x}}</option>
+                        <option value="">Select estimated revenue</option>
+                        <option ng-repeat="x in details.revenue" value="{{x.id}}">{{x.annual}}</option>
                     </select>  
                 </div>
             </div>
@@ -41,7 +45,8 @@
                 <label for="inputPassword" class="col-lg-2 control-label">How do you plan to use Square?</label>
                 <div class="col-lg-10">
                     <select ng-model="registration.plan">
-                        <option ng-repeat="x in details.plan" value="{{x.index}}">{{x}}</option>
+                        <option value="">Select usage type..</option>
+                        <option ng-repeat="x in details.plan" value="{{x.id}}">{{x.usage}}</option>
                     </select>  
                 </div>
             </div>

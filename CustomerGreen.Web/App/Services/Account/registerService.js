@@ -2,32 +2,26 @@
     angular
         .module('customerGreenApp')
         .factory('registerFactory', ['$http', function ($http) {
-            var getCountry = function () {
-                return $http.get('Country').then(function (d) { // Country Details api to be created 
+            var getDetails = function () {
+                return $http.get('api/RegistrationDetails/Get').then(function (d) { // Country Details api to be created 
                     return d.data;
                 })
             }
-            var getB1 = function () {
-                return $http.get('api/businessSubTypes/GetBusinessSubTypes').then(function (d) { // Business Type 1 along with type2 Details api to be created 
-                    return d.data;
-                })
-            }            
-            var getPlan = function () {
-                return $http.get('plan').then(function (d) { // Plan selection Details api to be created 
-                    return d.data;
-                })
-            }
-            var getRev = function () {
-                return $http.get('Rev').then(function (d) { // Revenue details api to be created 
-                    return d.data;
-                })
-            }
+            //var getState = function (s) {
+            //    return $http.get('state' + s).then(function (d) { // Country respective state Details api to be created 
+            //        return d.data;
+            //    })
+            //}
+            //var registerOrg = function (d) {
+            //    return $http.post('api/businessSubTypes/GetBusinessSubTypes',d).then(function (d) { // Business Type 1 along with type2 Details api to be created 
+            //        return d.data;
+            //    })
+            //}                       
             var factory = {
-                country: getCountry,
-                b1: getB1,
-                plan: getPlan,
-                rev: getRev    
+                details: getDetails,
+               // register : registerOrg
+   
             }
             return factory;
-    }])
+        }])    
 })();

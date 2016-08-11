@@ -1,8 +1,13 @@
-﻿namespace CustomerGreen.Core.Entities
+﻿using Newtonsoft.Json;
+using System.Runtime.Serialization;
+
+namespace CustomerGreen.Core.Entities
 {
     public class BusinessSubType : BaseEntity
     {
-        public virtual BusinessType BusinessType { get; set; }
+        [JsonIgnore]
+        [IgnoreDataMember]
+        public BusinessType BusinessType { get; set; }
         public string SubType { get; set; }
     }
 }
