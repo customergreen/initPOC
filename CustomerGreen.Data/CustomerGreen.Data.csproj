@@ -89,6 +89,22 @@
   <ItemGroup>
     <Compile Include="BigBangInitializer.cs" />
     <Compile Include="Configurations\CountryConfiguration.cs" />
+    <Compile Include="Migrations\201508150543025_BigBang.cs" />
+    <Compile Include="Migrations\201508150543025_BigBang.Designer.cs">
+      <DependentUpon>201508150543025_BigBang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608101147364_init.cs" />
+    <Compile Include="Migrations\201608101147364_init.Designer.cs">
+      <DependentUpon>201608101147364_init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608101452125_Ctrl.cs" />
+    <Compile Include="Migrations\201608101452125_Ctrl.Designer.cs">
+      <DependentUpon>201608101452125_Ctrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608101507046_Ctr2.cs" />
+    <Compile Include="Migrations\201608101507046_Ctr2.Designer.cs">
+      <DependentUpon>201608101507046_Ctr2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
     <Compile Include="Configurations\ContactConfiguration.cs" />
@@ -110,6 +126,20 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201508150543025_BigBang.resx">
+      <DependentUpon>201508150543025_BigBang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608101147364_init.resx">
+      <DependentUpon>201608101147364_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608101452125_Ctrl.resx">
+      <DependentUpon>201608101452125_Ctrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608101507046_Ctr2.resx">
+      <DependentUpon>201608101507046_Ctr2.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
